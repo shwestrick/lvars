@@ -11,8 +11,8 @@ import qualified Data.Vector.Storable           as SV
 import qualified Data.Vector.Storable.Mutable   as SVM
 
 -- import           Data.Time.Clock
-
 -- import qualified Control.DeepSeq
+-- import qualified System.Environment
 
 import           Criterion
 import           Criterion.Main
@@ -61,16 +61,20 @@ warmup i n input =
 -}
 
 main :: IO ()
-main = defaultMain
-  [ env (return $ SV.map hash $ SV.fromList $ inputRange) $ \(vec :: SV.Vector Int32) ->
-      bgroup "sorting benchmarks" $ concat $
-      flip map [CSort] $ \ssMeth ->
-      flip map [HSMerge] $ \smMeth ->
-      -- TODO(osa): Thresholds should be varying?
-      mkBench 10000 10000 ssMeth smMeth vec
-  ]
-  where
-    inputRange = [0 .. (10^(8 :: Int32) - 1)]
+main = do
+  -- args <- System.Environment.getArgs
+  -- let size = read $ args !! 0
+  let size = 10^(6 :: Int32)
+  putStrLn $ "size " ++ show size
+  putStrLn ""
+  defaultMain
+    [ env (return $ SV.map hash $ SV.fromList $ [0 .. size-1]) $ \(vec :: SV.Vector Int32) ->
+        bgroup "sorting benchmarks" $ concat $
+        flip map [CSort] $ \ssMeth ->
+        flip map [HSMerge] $ \smMeth ->
+        -- TODO(osa): Thresholds should be varying?
+        mkBench 10000 10000 ssMeth smMeth vec
+    ]
 
 mkBench :: Int -> Int -> SSort -> SMerge -> SV.Vector Int32 -> Benchmark
 mkBench ssThres smThres ssMeth smMeth vec =
