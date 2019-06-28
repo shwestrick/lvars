@@ -64,7 +64,7 @@ main :: IO ()
 main = do
   -- args <- System.Environment.getArgs
   -- let size = read $ args !! 0
-  let size = 10^(6 :: Int32)
+  let size = 10^(8 :: Int32)
   putStrLn $ "size " ++ show size
   putStrLn ""
   defaultMain
