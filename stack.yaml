@@ -10,10 +10,11 @@ packages:
  - src/par-transformers/
  - deps/concurrent-skiplist/
  - deps/ctrie
+ - deps/tslogger
 
- - location:
-    git:  https://github.com/iu-parfunc/tslogger.git
-    commit: bfa8d2b52f0d41439863b15863baa0ca2ef613d9
+# - location:
+#    git:  https://github.com/iu-parfunc/tslogger.git
+#    commit: bfa8d2b52f0d41439863b15863baa0ca2ef613d9
     
 # TODO: Revive:
  # - haskell/lvish-apps/

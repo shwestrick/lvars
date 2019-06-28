@@ -4,3 +4,6 @@
 [submodule "haskell/ctrie"]
 	path = deps/ctrie
 	url = git@github.com:iu-parfunc/ctrie.git
+[submodule "deps/tslogger"]
+	path = deps/tslogger
+	url = https://github.com/iu-parfunc/tslogger.git
