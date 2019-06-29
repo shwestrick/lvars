@@ -71,7 +71,7 @@ main = do
     [ env (return $ SV.map hash $ SV.fromList $ [0 .. size-1]) $ \(vec :: SV.Vector Int32) ->
         bgroup "sorting benchmarks" $ concat $
         flip map [CSort] $ \ssMeth ->
-        flip map [HSMerge] $ \smMeth ->
+        flip map [CMerge] $ \smMeth ->
         -- TODO(osa): Thresholds should be varying?
         mkBench 10000 10000 ssMeth smMeth vec
     ]
