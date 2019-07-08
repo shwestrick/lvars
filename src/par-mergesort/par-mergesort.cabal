@@ -82,3 +82,21 @@ benchmark bench-mergesort
     vector
 
   ghc-options:          -Wall -O2 -threaded
+
+executable run-mergesort
+  --type:                 exitcode-stdio-1.0
+  main-is:              Main.hs
+  hs-source-dirs:       exe/
+
+  build-depends:
+    base,
+    criterion           >= 1.1,
+    lvish,
+    par-classes,
+    par-mergesort,
+    par-transformers,
+    vector,
+    time,
+    deepseq
+
+  ghc-options:          -Wall -O2 -threaded

@@ -16,3 +16,4 @@ tags
 untracked_junk
 
 stack.yaml.lock
+bin/
